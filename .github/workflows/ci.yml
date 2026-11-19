@@ -1,0 +1,22 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
+      - name: Demo report in the job summary
+        if: always()
+        run: |
+          node bin/handoff.mjs lint examples/checkout/design.json --tokens examples/checkout/variables.json --format md >> "$GITHUB_STEP_SUMMARY" || true
+          node bin/handoff.mjs verify examples/checkout/drifted.html --ref examples/checkout/reference.png --tokens examples/checkout/variables.json --format md >> "$GITHUB_STEP_SUMMARY" || true
