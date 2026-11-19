@@ -1,0 +1,53 @@
+<!doctype html>
+<!-- What an agent writes from a screenshot alone: close enough by eye, wrong in the details. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout</title>
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body { background: #fff; color: #111; font-family: "DejaVu Sans", Arial, sans-serif; }
+  .checkout { width: 390px; min-height: 720px; padding: 24px; display: flex; flex-direction: column; gap: 22px; }
+  .top { display: flex; align-items: center; justify-content: space-between; }
+  h1 { font-size: 24px; }
+  .close { width: 20px; height: 20px; font-size: 13px; color: #111; cursor: pointer; text-align: center; }
+  .summary { background: #f5f5f7; border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; }
+  .summary div { display: flex; justify-content: space-between; font-size: 15px; }
+  .muted { color: #6b6b74; }
+  .rule { height: 1px; background: #e5e5ea; }
+  .total { font-size: 17px !important; font-weight: 700; }
+  .promo { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .promo p { font-size: 13px; color: #a1a1aa; }
+  .apply { font-size: 13px; font-weight: 700; color: #4a3fd5; cursor: pointer; }
+  .methods { display: flex; gap: 8px; }
+  .method { flex: 1; height: 48px; border-radius: 12px; border: 1px solid #e5e5ea; display: grid; place-items: center; font-size: 15px; cursor: pointer; }
+  .method.on { border-color: #4a3fd5; color: #4a3fd5; font-weight: 700; }
+  .pay { margin-top: auto; height: 52px; border-radius: 10px; background: #4a3fd5; color: #fff; font-size: 18px; font-weight: 700; display: grid; place-items: center; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="checkout">
+  <div class="top">
+    <h1>Checkout</h1>
+    <div class="close" onclick="history.back()">✕</div>
+  </div>
+  <div class="summary">
+    <div><span>Annual membership</span><span>$499.00</span></div>
+    <div class="muted"><span>Lab visit</span><span>Included</span></div>
+    <div class="rule"></div>
+    <div class="total"><span>Total</span><span>$499.00</span></div>
+  </div>
+  <div class="promo">
+    <p>Have a promo code from your clinic?</p>
+    <a class="apply">Apply</a>
+  </div>
+  <div class="methods">
+    <div class="method on">Card</div>
+    <div class="method">Apple Pay</div>
+    <div class="method">PayPal</div>
+  </div>
+  <div class="pay" onclick="pay()">Pay $499.00</div>
+</div>
+</body>
+</html>

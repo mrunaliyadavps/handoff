@@ -1,0 +1,58 @@
+<!doctype html>
+<!-- What an agent writes when it follows SKILL.md: tokens only, real controls, labels. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--color-bg); color: var(--color-ink); font-family: "DejaVu Sans", Arial, sans-serif; }
+  button { font: inherit; border: 0; cursor: pointer; }
+  .checkout { width: 390px; min-height: 720px; padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-6); }
+  .top { display: flex; align-items: center; justify-content: space-between; }
+  h1 { font-size: var(--font-size-xl); }
+  .close { width: 44px; height: 44px; border-radius: var(--radius-full); background: var(--color-surface); color: var(--color-ink); font-size: var(--font-size-lg); display: grid; place-items: center; }
+  .summary { background: var(--color-surface); border-radius: var(--radius-lg); padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3); }
+  .summary dl, .summary div { display: flex; justify-content: space-between; font-size: var(--font-size-base); }
+  .summary dd { margin: 0; }
+  .muted { color: var(--color-muted); }
+  .rule { height: 1px; background: var(--color-line); border: 0; }
+  .total { font-size: var(--font-size-lg) !important; font-weight: 700; }
+  .promo { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
+  .promo p { font-size: var(--font-size-sm); color: var(--color-muted); }
+  .apply { height: 44px; padding: 0 var(--space-3); background: none; color: var(--color-brand); font-size: var(--font-size-base); font-weight: 700; }
+  .methods { display: flex; gap: var(--space-2); border: 0; padding: 0; }
+  .method { flex: 1; height: 48px; border-radius: var(--radius-md); border: 1px solid var(--color-line); background: var(--color-bg); color: var(--color-ink); font-size: var(--font-size-base); display: grid; place-items: center; }
+  .method[aria-checked="true"] { border-color: var(--color-brand); color: var(--color-brand); font-weight: 700; }
+  .pay { margin-top: auto; height: 52px; border-radius: var(--radius-md); background: var(--color-brand); color: var(--color-brand-ink); font-size: var(--font-size-lg); font-weight: 700; }
+  button:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 2px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+<main class="checkout">
+  <header class="top">
+    <h1>Checkout</h1>
+    <button class="close" aria-label="Close checkout">✕</button>
+  </header>
+  <section class="summary" aria-label="Order summary">
+    <div><span>Annual membership</span><span>$499.00</span></div>
+    <div class="muted"><span>Lab visit</span><span>Included</span></div>
+    <hr class="rule">
+    <div class="total"><span>Total</span><span>$499.00</span></div>
+  </section>
+  <div class="promo">
+    <p id="promo-hint">Have a promo code from your clinic?</p>
+    <button class="apply" aria-describedby="promo-hint">Apply</button>
+  </div>
+  <div class="methods" role="radiogroup" aria-label="Payment method">
+    <button class="method" role="radio" aria-checked="true">Card</button>
+    <button class="method" role="radio" aria-checked="false">Apple Pay</button>
+    <button class="method" role="radio" aria-checked="false">PayPal</button>
+  </div>
+  <button class="pay">Pay $499.00</button>
+</main>
+</body>
+</html>
