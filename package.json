@@ -1,0 +1,41 @@
+{
+  "name": "handoff-skill",
+  "version": "0.1.0",
+  "description": "An agent skill that turns Figma frames into accessible, token-correct code, then proves it matches.",
+  "type": "module",
+  "bin": {
+    "handoff": "bin/handoff.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "skills",
+    "action.yml"
+  ],
+  "scripts": {
+    "pretest": "node examples/build-fixture.mjs",
+    "test": "node --test test/*.test.mjs",
+    "demo": "node examples/build-fixture.mjs && node bin/handoff.mjs lint examples/checkout/design.json --tokens examples/checkout/variables.json; node bin/handoff.mjs verify examples/checkout/drifted.html --ref examples/checkout/reference.png --tokens examples/checkout/variables.json"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "axe-core": "^4.10.0",
+    "pixelmatch": "^7.1.0",
+    "playwright": "^1.48.0",
+    "pngjs": "^7.0.0"
+  },
+  "keywords": [
+    "figma",
+    "design-to-code",
+    "claude-code",
+    "agent-skill",
+    "accessibility",
+    "design-tokens",
+    "visual-regression",
+    "mcp"
+  ],
+  "author": "Mrunali Yadav",
+  "license": "MIT"
+}
